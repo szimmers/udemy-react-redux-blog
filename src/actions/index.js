@@ -5,6 +5,7 @@ const API_KEY = '?key=tiruk3j3';
 //const API_KEY = '?key=1234';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST = 'FETCH_POST';
 export const CREATE_POST = 'CREATE_POST';
 
 export function fetchPosts() {
@@ -23,6 +24,16 @@ export function createPost(values, callback) {
 
 	return {
 		type: CREATE_POST,
+		payload: request
+	};
+}
+
+export function fetchPost(id) {
+	const url = `${ROOT_URL}/posts/${id}${API_KEY}`;
+	const request = axios.get(url);
+
+	return {
+		type: FETCH_POST,
 		payload: request
 	};
 }
